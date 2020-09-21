@@ -18,5 +18,5 @@ echo "Error: %ACTION%"
 exit 1
 :StepX
 
-call :cmdX xyo-cc --mode=%ACTION% @util/quantum-script-extension-shell.static.compile.info
-call :cmdX xyo-cc --mode=%ACTION% @util/quantum-script-extension-shell.dynamic.compile.info
+call :cmdX xyo-cc --mode=%ACTION% @util/quantum-script-extension-shell.static.compile
+call :cmdX xyo-cc --mode=%ACTION% @util/quantum-script-extension-shell.dynamic.compile
