@@ -3,7 +3,7 @@
 # http://unlicense.org/
 # Created by Grigore Stefan <g_stefan@yahoo.com>
 
-echo "-> local-release quantum-script-extension-sha512"
+echo "-> local-release quantum-script-extension-shell"
 
 cmdX(){
 	if ! "$@" ; then
@@ -17,4 +17,4 @@ export XYO_PATH_RELEASE=release
 cmdX /bin/sh ./port/build.ubuntu.sh make
 cmdX /bin/sh ./port/build.ubuntu.sh install
 cmdX /bin/sh ./port/build.ubuntu.sh install-release
-cmdX xyo-cc quantum-script-extension-sha512 --archive-release-sha512 --version-file=source/quantum-script-extension-sha512.version.ini
+cmdX xyo-cc quantum-script-extension-shell --archive-release-sha512 --version-file=source/quantum-script-extension-shell.version.ini

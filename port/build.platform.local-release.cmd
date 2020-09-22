@@ -3,7 +3,7 @@ rem Public domain
 rem http://unlicense.org/
 rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
-echo -^> platform local-release quantum-script-extension-sha512
+echo -^> platform local-release quantum-script-extension-shell
 
 goto cmdXDefined
 :cmdX
