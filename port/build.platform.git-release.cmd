@@ -33,4 +33,4 @@ goto :eof
 
 :tagExists
 echo Release already exists
-exit 1
+exit 0
