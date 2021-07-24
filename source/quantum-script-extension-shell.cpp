@@ -67,7 +67,7 @@ namespace Quantum {
 					printf("- shell-file-put-contents-buffer\n");
 #endif
 					TPointerX<Variable> &buffer(arguments->index(1));
-					if(VariableBuffer::isVariableBuffer(buffer)) {
+					if(TIsType<VariableBuffer>(buffer)) {
 						return VariableBoolean::newVariable(XYO::Shell::filePutContents(
 									(arguments->index(0))->toString(),
 									((VariableBuffer *)buffer.value())->buffer));
@@ -443,12 +443,12 @@ namespace Quantum {
 					printf("- shell-file-replace-text\n");
 #endif
 					TDynamicArray<TDynamicArray<String> > textInOut;
-					if(VariableArray::isVariableArray(arguments->index(2))) {
+					if(TIsType<VariableArray>(arguments->index(2))) {
 						VariableArray *pairList = static_cast<VariableArray *>((arguments->index(2)).value());
 						VariableArray *scan;
 						size_t k;
 						for(k = 0; k < pairList->value->length(); ++k) {
-							if(VariableArray::isVariableArray(pairList->index(k))) {
+							if(TIsType<VariableArray>(pairList->index(k))) {
 								scan = static_cast<VariableArray *>((pairList->index(k)).value());
 								textInOut[k][0] = (scan->index(0))->toString();
 								textInOut[k][1] = (scan->index(1))->toString();
