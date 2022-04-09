@@ -12,6 +12,5 @@
 #include "quantum-script-extension-shell-license.cpp"
 
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELL_NO_VERSION
-#include "quantum-script-extension-shell-version.cpp"
+#	include "quantum-script-extension-shell-version.cpp"
 #endif
-

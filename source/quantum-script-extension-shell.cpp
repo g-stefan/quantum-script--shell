@@ -14,7 +14,7 @@
 #include "quantum-script-extension-shell-license.hpp"
 #include "quantum-script-extension-shell.hpp"
 #ifndef QUANTUM_SCRIPT_EXTENSION_SHELL_NO_VERSION
-#include "quantum-script-extension-shell-version.hpp"
+#	include "quantum-script-extension-shell-version.hpp"
 #endif
 
 #include "quantum-script-variableboolean.hpp"
@@ -38,7 +38,7 @@ namespace Quantum {
 					printf("- shell-file-get-contents\n");
 #endif
 					String output;
-					if(XYO::Shell::fileGetContents((arguments->index(0))->toString(), output)) {
+					if (XYO::Shell::fileGetContents((arguments->index(0))->toString(), output)) {
 						return VariableString::newVariable(output);
 					};
 					return Context::getValueUndefined();
@@ -56,7 +56,7 @@ namespace Quantum {
 					printf("- shell-file-get-contents-buffer\n");
 #endif
 					TPointer<Variable> retV(VariableBuffer::newVariable());
-					if(XYO::Shell::fileGetContents((arguments->index(0))->toString(), ((VariableBuffer *)(retV.value()))->buffer)) {
+					if (XYO::Shell::fileGetContents((arguments->index(0))->toString(), ((VariableBuffer *)(retV.value()))->buffer)) {
 						return retV;
 					};
 					return Context::getValueUndefined();
@@ -67,10 +67,10 @@ namespace Quantum {
 					printf("- shell-file-put-contents-buffer\n");
 #endif
 					TPointerX<Variable> &buffer(arguments->index(1));
-					if(TIsType<VariableBuffer>(buffer)) {
+					if (TIsType<VariableBuffer>(buffer)) {
 						return VariableBoolean::newVariable(XYO::Shell::filePutContents(
-									(arguments->index(0))->toString(),
-									((VariableBuffer *)buffer.value())->buffer));
+						    (arguments->index(0))->toString(),
+						    ((VariableBuffer *)buffer.value())->buffer));
 					};
 					return Context::getValueUndefined();
 				};
@@ -79,7 +79,7 @@ namespace Quantum {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-system\n");
 #endif
-					return VariableNumber::newVariable((Number)XYO::Shell::system( (arguments->index(0))->toString() ));
+					return VariableNumber::newVariable((Number)XYO::Shell::system((arguments->index(0))->toString()));
 				};
 
 				static TPointer<Variable> shell_getenv(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -93,48 +93,45 @@ namespace Quantum {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-setenv\n");
 #endif
-					return VariableBoolean::newVariable(XYO::Shell::setenv( (arguments->index(0))->toString(), (arguments->index(1))->toString()));
+					return VariableBoolean::newVariable(XYO::Shell::setenv((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 				};
-
 
 				static TPointer<Variable> fileExists(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-file-exists\n");
 #endif
 
-					return VariableBoolean::newVariable(XYO::Shell::fileExists( (arguments->index(0))->toString() ));
+					return VariableBoolean::newVariable(XYO::Shell::fileExists((arguments->index(0))->toString()));
 				};
-
 
 				static TPointer<Variable> directoryExists(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-directory-exists\n");
 #endif
 
-					return VariableBoolean::newVariable(XYO::Shell::directoryExists( (arguments->index(0))->toString() ));
+					return VariableBoolean::newVariable(XYO::Shell::directoryExists((arguments->index(0))->toString()));
 				};
 
 				static TPointer<Variable> chdir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-chdir\n");
 #endif
-					return VariableBoolean::newVariable(XYO::Shell::chdir( (arguments->index(0))->toString() ));
+					return VariableBoolean::newVariable(XYO::Shell::chdir((arguments->index(0))->toString()));
 				};
 
 				static TPointer<Variable> rmdir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-rmdir\n");
 #endif
-					return VariableBoolean::newVariable(XYO::Shell::rmdir( (arguments->index(0))->toString() ));
+					return VariableBoolean::newVariable(XYO::Shell::rmdir((arguments->index(0))->toString()));
 				};
 
 				static TPointer<Variable> mkdir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-mkdir\n");
 #endif
-					return VariableBoolean::newVariable(XYO::Shell::mkdir( (arguments->index(0))->toString() ));
+					return VariableBoolean::newVariable(XYO::Shell::mkdir((arguments->index(0))->toString()));
 				};
-
 
 				static TPointer<Variable> getcwd(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
@@ -143,18 +140,15 @@ namespace Quantum {
 					return VariableString::newVariable(XYO::Shell::getCwd());
 				};
 
-
 				static TPointer<Variable> copy(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-copy\n");
 #endif
 
 					return VariableBoolean::newVariable(XYO::Shell::copy(
-								(arguments->index(0))->toString(),
-								(arguments->index(1))->toString()
-							));
+					    (arguments->index(0))->toString(),
+					    (arguments->index(1))->toString()));
 				};
-
 
 				static TPointer<Variable> rename(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
@@ -162,9 +156,8 @@ namespace Quantum {
 #endif
 
 					return VariableBoolean::newVariable(XYO::Shell::rename(
-								(arguments->index(0))->toString(),
-								(arguments->index(1))->toString()
-							));
+					    (arguments->index(0))->toString(),
+					    (arguments->index(1))->toString()));
 				};
 
 				static TPointer<Variable> remove(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -172,7 +165,7 @@ namespace Quantum {
 					printf("- shell-remove\n");
 #endif
 
-					return VariableBoolean::newVariable(XYO::Shell::remove( (arguments->index(0))->toString() ));
+					return VariableBoolean::newVariable(XYO::Shell::remove((arguments->index(0))->toString()));
 				};
 
 				static TPointer<Variable> compareLastWriteTime(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -181,11 +174,9 @@ namespace Quantum {
 #endif
 
 					return VariableNumber::newVariable(
-							XYO::Shell::compareLastWriteTime(
-								(arguments->index(0))->toString(),
-								(arguments->index(1))->toString()
-							)
-						);
+					    XYO::Shell::compareLastWriteTime(
+					        (arguments->index(0))->toString(),
+					        (arguments->index(1))->toString()));
 				};
 
 				static TPointer<Variable> touch(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -194,10 +185,8 @@ namespace Quantum {
 #endif
 
 					return VariableBoolean::newVariable(
-							XYO::Shell::touch(
-								(arguments->index(0))->toString()
-							)
-						);
+					    XYO::Shell::touch(
+					        (arguments->index(0))->toString()));
 				};
 
 				static TPointer<Variable> is(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -333,7 +322,6 @@ namespace Quantum {
 					return VariableBoolean::newVariable(XYO::Shell::isEnv((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 				};
 
-
 				static TPointer<Variable> getFileList(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-get-file-list\n");
@@ -344,8 +332,8 @@ namespace Quantum {
 					size_t k;
 					//
 					XYO::Shell::getFileList((arguments->index(0))->toString(), retVX);
-					for(k = 0; k < retVX.length(); ++k) {
-						(retV->index(k))=VariableString::newVariable(retVX[k]);
+					for (k = 0; k < retVX.length(); ++k) {
+						(retV->index(k)) = VariableString::newVariable(retVX[k]);
 					};
 					//
 					return retV.value();
@@ -361,8 +349,8 @@ namespace Quantum {
 					size_t k;
 					//
 					XYO::Shell::getDirList((arguments->index(0))->toString(), retVX);
-					for(k = 0; k < retVX.length(); ++k) {
-						(retV->index(k))=VariableString::newVariable(retVX[k]);
+					for (k = 0; k < retVX.length(); ++k) {
+						(retV->index(k)) = VariableString::newVariable(retVX[k]);
 					};
 					//
 					return retV.value();
@@ -442,13 +430,13 @@ namespace Quantum {
 #ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
 					printf("- shell-file-replace-text\n");
 #endif
-					TDynamicArray<TDynamicArray<String> > textInOut;
-					if(TIsType<VariableArray>(arguments->index(2))) {
+					TDynamicArray<TDynamicArray<String>> textInOut;
+					if (TIsType<VariableArray>(arguments->index(2))) {
 						VariableArray *pairList = static_cast<VariableArray *>((arguments->index(2)).value());
 						VariableArray *scan;
 						size_t k;
-						for(k = 0; k < pairList->value->length(); ++k) {
-							if(TIsType<VariableArray>(pairList->index(k))) {
+						for (k = 0; k < pairList->value->length(); ++k) {
+							if (TIsType<VariableArray>(pairList->index(k))) {
 								scan = static_cast<VariableArray *>((pairList->index(k)).value());
 								textInOut[k][0] = (scan->index(0))->toString();
 								textInOut[k][1] = (scan->index(1))->toString();
@@ -457,11 +445,10 @@ namespace Quantum {
 					};
 
 					return VariableBoolean::newVariable(XYO::Shell::fileReplaceText(
-								(arguments->index(0))->toString(),
-								(arguments->index(1))->toString(),
-								textInOut,
-								(arguments->index(2))->toIndex()
-							));
+					    (arguments->index(0))->toString(),
+					    (arguments->index(1))->toString(),
+					    textInOut,
+					    (arguments->index(2))->toIndex()));
 				};
 
 				void registerInternalExtension(Executive *executive) {
@@ -544,4 +531,3 @@ extern "C" QUANTUM_SCRIPT_EXTENSION_SHELL_EXPORT void quantumScriptExtension(Qua
 	Quantum::Script::Extension::Shell::initExecutive(executive, extensionId);
 };
 #endif
-
