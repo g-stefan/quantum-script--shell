@@ -49,10 +49,10 @@ Shell.fileReplaceText(fileIn,fileOut,textInOut,lineMaxLength);
 Shell.mkdirRecursivelyIfNotExists(path);
 Shell.copyFile(source,target);
 Shell.removeDirContentRecursively(dir);
+Shell.realPath(path);
 ```
 
 ## License
 
-Copyright (c) Grigore Stefan
-
+Copyright (c) 2022 Grigore Stefan
 Licensed under the [MIT](LICENSE) license.
