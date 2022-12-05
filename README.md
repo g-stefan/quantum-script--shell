@@ -50,6 +50,7 @@ Shell.mkdirRecursivelyIfNotExists(path);
 Shell.copyFile(source,target);
 Shell.removeDirContentRecursively(dir);
 Shell.realPath(path);
+Shell.getFileSize(file);
 ```
 
 ## License
