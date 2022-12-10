@@ -449,10 +449,10 @@ namespace XYO::QuantumScript::Extension::Shell {
 		printf("- shell-get-file-size\n");
 #endif
 		int64_t size;
-		if(XYO::System::Shell::getFileSize((arguments->index(0))->toString(),size)){
+		if (XYO::System::Shell::getFileSize((arguments->index(0))->toString(), size)) {
 			return VariableNumber::newVariable(size);
 		};
-		return VariableNumber::newVariable(-1);		
+		return VariableNumber::newVariable(-1);
 	};
 
 	void registerInternalExtension(Executive *executive) {

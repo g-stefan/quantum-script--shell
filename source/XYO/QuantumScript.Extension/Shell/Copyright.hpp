@@ -16,7 +16,6 @@ namespace XYO::QuantumScript::Extension::Shell::Copyright {
 	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *publisher();
 	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *company();
 	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *contact();
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *fullCopyright();
 };
 
 #endif
