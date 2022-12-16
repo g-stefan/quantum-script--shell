@@ -14,7 +14,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	using namespace XYO::QuantumScript::Extension::Buffer;
 
 	static TPointer<Variable> fileGetContents(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-file-get-contents\n");
 #endif
 		String output;
@@ -25,14 +25,14 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> filePutContents(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-file-put-contents\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::filePutContents((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> fileGetContentsBuffer(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-file-get-contents-buffer\n");
 #endif
 		TPointer<Variable> retV(VariableBuffer::newVariable());
@@ -43,7 +43,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> filePutContentsBuffer(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-file-put-contents-buffer\n");
 #endif
 		TPointerX<Variable> &buffer(arguments->index(1));
@@ -56,28 +56,28 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> system(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-system\n");
 #endif
 		return VariableNumber::newVariable((Number)XYO::System::Shell::system((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> shell_getenv(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-getenv\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getEnv((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> shell_setenv(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-setenv\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::setenv((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> fileExists(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-file-exists\n");
 #endif
 
@@ -85,7 +85,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> directoryExists(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-directory-exists\n");
 #endif
 
@@ -93,35 +93,35 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> chdir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-chdir\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::chdir((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> rmdir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-rmdir\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::rmdir((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> mkdir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-mkdir\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::mkdir((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> getcwd(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-getcwd\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getCwd());
 	};
 
 	static TPointer<Variable> copy(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-copy\n");
 #endif
 
@@ -131,7 +131,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> rename(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-rename\n");
 #endif
 
@@ -141,7 +141,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> remove(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove\n");
 #endif
 
@@ -149,7 +149,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> compareLastWriteTime(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-compare-last-write-time\n");
 #endif
 
@@ -160,7 +160,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> touch(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-touch\n");
 #endif
 
@@ -170,7 +170,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> is(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-is\n");
 #endif
 		String name = (arguments->index(0))->toString();
@@ -191,119 +191,119 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> getFileName(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-name\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getFileName((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> getFileExtension(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-extension\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getFileExtension((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> getFileBasename(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-basename\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getFileBasename((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> getFilePath(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-path\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getFilePath((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> getFilePathX(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-pathx\n");
 #endif
 		return VariableString::newVariable(XYO::System::Shell::getFilePathX((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> execute(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-execute\n");
 #endif
 		return VariableNumber::newVariable(XYO::System::Shell::execute((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> executeHidden(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-execute-hidden\n");
 #endif
 		return VariableNumber::newVariable(XYO::System::Shell::executeHidden((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> executeNoWait(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-execute-no-wait\n");
 #endif
 		return VariableNumber::newVariable(XYO::System::Shell::executeNoWait((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> executeHiddenNoWait(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-execute-hidden-no-wait\n");
 #endif
 		return VariableNumber::newVariable(XYO::System::Shell::executeHiddenNoWait((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> isProcessTerminated(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-is-process-terminated\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::isProcessTerminated((XYO::System::Shell::ProcessId)((arguments->index(0))->toNumber())));
 	};
 
 	static TPointer<Variable> terminateProcess(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-terminate-process\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::terminateProcess((XYO::System::Shell::ProcessId)((arguments->index(0)->toNumber())), (arguments->index(1))->toNumber()));
 	};
 
 	static TPointer<Variable> removeFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-file\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeFile((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> removeEmptyDir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-empty-dir\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeEmptyDir((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> removeFileAndDirectoryIfEmpty(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-file-and-directory-if-empty\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeFileAndDirectoryIfEmpty((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> touchIfExists(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-touch-if-exists\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::touchIfExists((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> isEnv(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-is-env\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::isEnv((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> getFileList(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-list\n");
 #endif
 		TPointer<VariableArray> retV;
@@ -320,7 +320,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> getDirList(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-dir-list\n");
 #endif
 		TPointer<VariableArray> retV;
@@ -337,77 +337,77 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> mkdirRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-mkdir-recursively\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::mkdirRecursively((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> removeEmptyDirRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-empty-dir-recursively\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeEmptyDirRecursively((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> removeDirContentRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-dir-content-recursively\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeDirContentRecursively((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> removeDirRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-dir-recursively\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeDirRecursively((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> copyDirRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-copy-dir-recursively\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::copyDirRecursively((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> removeFileRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-file-recursively\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeFileRecursively((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> copyFilesToDirectory(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-copy-files-to-directory\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::copyFilesToDirectory((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> mkdirRecursivelyIfNotExists(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-mkdir-recursively-if-not-exists\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::mkdirRecursivelyIfNotExists((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> mkdirFilePath(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-mkdir-file-path\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::mkdirFilePath((arguments->index(0))->toString()));
 	};
 
 	static TPointer<Variable> copyFile(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-copy-file\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::copyFile((arguments->index(0))->toString(), (arguments->index(1))->toString()));
 	};
 
 	static TPointer<Variable> fileReplaceText(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-file-replace-text\n");
 #endif
 		TDynamicArray<TDynamicArray<String>> textInOut;
@@ -432,7 +432,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> realPath(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-real-path\n");
 #endif
 
@@ -445,7 +445,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	};
 
 	static TPointer<Variable> getFileSize(VariableFunction *function, Variable *this_, VariableArray *arguments) {
-#ifdef QUANTUM_SCRIPT_DEBUG_RUNTIME
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-get-file-size\n");
 #endif
 		int64_t size;
