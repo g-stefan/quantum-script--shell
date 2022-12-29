@@ -12,6 +12,8 @@
 			"quantum-script",
 			"quantum-script--console",
 			"quantum-script--buffer"
-		]
+		],
+		"hasRelease" : true,
+		"githubRelease" : true
 	}
 }
