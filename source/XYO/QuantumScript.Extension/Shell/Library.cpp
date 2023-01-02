@@ -364,6 +364,20 @@ namespace XYO::QuantumScript::Extension::Shell {
 		return VariableBoolean::newVariable(XYO::System::Shell::removeDirRecursively((arguments->index(0))->toString()));
 	};
 
+	static TPointer<Variable> removeDirContentRecursivelyForce(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shell-remove-dir-content-recursively-force\n");
+#endif
+		return VariableBoolean::newVariable(XYO::System::Shell::removeDirContentRecursivelyForce((arguments->index(0))->toString()));
+	};
+
+	static TPointer<Variable> removeDirRecursivelyForce(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shell-remove-dir-recursively-force\n");
+#endif
+		return VariableBoolean::newVariable(XYO::System::Shell::removeDirRecursivelyForce((arguments->index(0))->toString()));
+	};
+	
 	static TPointer<Variable> copyDirRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-copy-dir-recursively\n");
@@ -523,6 +537,8 @@ namespace XYO::QuantumScript::Extension::Shell {
 		executive->setFunction2("Shell.fileReplaceText(fileIn,fileOut,textInOut,lineMaxLength)", fileReplaceText);
 		executive->setFunction2("Shell.realPath(path)", realPath);
 		executive->setFunction2("Shell.getFileSize(file)", getFileSize);
+		executive->setFunction2("Shell.removeDirContentRecursivelyForce(path)", removeDirContentRecursivelyForce);
+		executive->setFunction2("Shell.removeDirRecursivelyForce(path)", removeDirRecursivelyForce);
 	};
 
 };
