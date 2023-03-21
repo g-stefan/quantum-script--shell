@@ -377,7 +377,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::removeDirRecursivelyForce((arguments->index(0))->toString()));
 	};
-	
+
 	static TPointer<Variable> copyDirRecursively(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-copy-dir-recursively\n");
@@ -476,7 +476,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 	void initExecutive(Executive *executive, void *extensionId) {
 
 		String info = "Shell\r\n";
-		info << License::shortLicense();
+		info << License::shortLicense().c_str();
 
 		executive->setExtensionName(extensionId, "Shell");
 		executive->setExtensionInfo(extensionId, info);
