@@ -12,10 +12,10 @@
 #endif
 
 namespace XYO::QuantumScript::Extension::Shell::Copyright {
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT std::string copyright();
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT std::string publisher();
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT std::string company();
-	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT std::string contact();
+	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *copyright();
+	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *publisher();
+	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *company();
+	XYO_QUANTUMSCRIPT_EXTENSION_SHELL_EXPORT const char *contact();
 };
 
 #endif
