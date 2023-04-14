@@ -469,6 +469,13 @@ namespace XYO::QuantumScript::Extension::Shell {
 		return VariableNumber::newVariable(-1);
 	};
 
+	static TPointer<Variable> hasEnv(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shell-has-env\n");
+#endif
+		return VariableBoolean::newVariable(XYO::System::Shell::hasEnv((arguments->index(0))->toString()));
+	};
+
 	void registerInternalExtension(Executive *executive) {
 		executive->registerInternalExtension("Shell", initExecutive);
 	};
@@ -539,6 +546,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 		executive->setFunction2("Shell.getFileSize(file)", getFileSize);
 		executive->setFunction2("Shell.removeDirContentRecursivelyForce(path)", removeDirContentRecursivelyForce);
 		executive->setFunction2("Shell.removeDirRecursivelyForce(path)", removeDirRecursivelyForce);
+		executive->setFunction2("Shell.hasEnv(name)", hasEnv);
 	};
 
 };

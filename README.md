@@ -9,6 +9,7 @@ Shell.filePutContentsBuffer(file,buffer);
 Shell.system(cmd);
 Shell.getenv(name);
 Shell.setenv(name,value);
+Shell.hasEnv(name);
 Shell.fileExists(name);
 Shell.directoryExists(name);
 Shell.chdir(path);
