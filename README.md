@@ -52,6 +52,10 @@ Shell.copyFile(source,target);
 Shell.removeDirContentRecursively(dir);
 Shell.realPath(path);
 Shell.getFileSize(file);
+Shell.removeFileForce(file);
+Shell.rmdirForce(path);
+Shell.removeDirContentRecursivelyForce(path);
+Shell.removeDirRecursivelyForce(path);
 ```
 
 ## License

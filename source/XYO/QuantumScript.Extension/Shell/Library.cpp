@@ -1,7 +1,7 @@
 // Quantum Script Extension Shell
-// Copyright (c) 2016-2023 Grigore Stefan <g_stefan@yahoo.com>
+// Copyright (c) 2016-2024 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-// SPDX-FileCopyrightText: 2016-2023 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-FileCopyrightText: 2016-2024 Grigore Stefan <g_stefan@yahoo.com>
 // SPDX-License-Identifier: MIT
 
 #include <XYO/QuantumScript.Extension/Shell/Library.hpp>
@@ -364,6 +364,20 @@ namespace XYO::QuantumScript::Extension::Shell {
 		return VariableBoolean::newVariable(XYO::System::Shell::removeDirRecursively((arguments->index(0))->toString()));
 	};
 
+	static TPointer<Variable> removeFileForce(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shell-remove-file-force\n");
+#endif
+		return VariableBoolean::newVariable(XYO::System::Shell::removeFileForce((arguments->index(0))->toString()));
+	};
+
+	static TPointer<Variable> rmdirForce(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shell-rmdir-force\n");
+#endif
+		return VariableBoolean::newVariable(XYO::System::Shell::rmdirForce((arguments->index(0))->toString()));
+	};
+
 	static TPointer<Variable> removeDirContentRecursivelyForce(VariableFunction *function, Variable *this_, VariableArray *arguments) {
 #ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
 		printf("- shell-remove-dir-content-recursively-force\n");
@@ -544,6 +558,8 @@ namespace XYO::QuantumScript::Extension::Shell {
 		executive->setFunction2("Shell.fileReplaceText(fileIn,fileOut,textInOut,lineMaxLength)", fileReplaceText);
 		executive->setFunction2("Shell.realPath(path)", realPath);
 		executive->setFunction2("Shell.getFileSize(file)", getFileSize);
+		executive->setFunction2("Shell.removeFileForce(file)", removeFileForce);
+		executive->setFunction2("Shell.rmdirForce(path)", rmdirForce);
 		executive->setFunction2("Shell.removeDirContentRecursivelyForce(path)", removeDirContentRecursivelyForce);
 		executive->setFunction2("Shell.removeDirRecursivelyForce(path)", removeDirRecursivelyForce);
 		executive->setFunction2("Shell.hasEnv(name)", hasEnv);
