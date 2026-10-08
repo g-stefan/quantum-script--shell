@@ -175,13 +175,13 @@ namespace XYO::QuantumScript::Extension::Shell {
 #endif
 		String name = (arguments->index(0))->toString();
 
-#ifdef XYO_OS_TYPE_WIN
+#ifdef XYO_PLATFORM_OS_WINDOWS
 		if (name == "win") {
 			return VariableBoolean::newVariable(true);
 		};
 #endif
 
-#ifdef XYO_OS_TYPE_UNIX
+#ifdef XYO_PLATFORM_OS_LINUX
 		if (name == "unix") {
 			return VariableBoolean::newVariable(true);
 		};
@@ -452,11 +452,17 @@ namespace XYO::QuantumScript::Extension::Shell {
 			};
 		};
 
+		// a line size of 0 reads empty lines forever, use the default
+		size_t lineMaxLength = (arguments->index(3))->toIndex();
+		if (lineMaxLength == 0) {
+			lineMaxLength = 32768;
+		};
+
 		return VariableBoolean::newVariable(XYO::System::Shell::fileReplaceText(
 		    (arguments->index(0))->toString(),
 		    (arguments->index(1))->toString(),
 		    textInOut,
-		    (arguments->index(2))->toIndex()));
+		    lineMaxLength));
 	};
 
 	static TPointer<Variable> realPath(VariableFunction *function, Variable *this_, VariableArray *arguments) {
@@ -488,6 +494,13 @@ namespace XYO::QuantumScript::Extension::Shell {
 		printf("- shell-has-env\n");
 #endif
 		return VariableBoolean::newVariable(XYO::System::Shell::hasEnv((arguments->index(0))->toString()));
+	};
+
+	static TPointer<Variable> isEmptyDir(VariableFunction *function, Variable *this_, VariableArray *arguments) {
+#ifdef XYO_QUANTUMSCRIPT_DEBUG_RUNTIME
+		printf("- shell-is-empty-dir\n");
+#endif
+		return VariableBoolean::newVariable(XYO::System::Shell::isEmptyDir((arguments->index(0))->toString()));
 	};
 
 	void registerInternalExtension(Executive *executive) {
@@ -563,6 +576,7 @@ namespace XYO::QuantumScript::Extension::Shell {
 		executive->setFunction2("Shell.removeDirContentRecursivelyForce(path)", removeDirContentRecursivelyForce);
 		executive->setFunction2("Shell.removeDirRecursivelyForce(path)", removeDirRecursivelyForce);
 		executive->setFunction2("Shell.hasEnv(name)", hasEnv);
+		executive->setFunction2("Shell.isEmptyDir(name)", isEmptyDir);
 	};
 
 };
